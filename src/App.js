@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Counters from "./components/counters";
 import NavBar from "./components/navbar";
+import ArticleForm from "./components/article";
 
 class App extends Component {
     state = {
@@ -34,13 +35,7 @@ class App extends Component {
                     onRemoveZeros={this.removeZeros}
                 />
                 <main className="container-fluid mt-4">
-                    <Counters
-                        counters={this.state.counters}
-                        onIncrement={this.handleIncrement}
-                        onDecrement={this.handleDecrement}
-                        onDelete={this.handleDelete}
-                        onReset={this.handleReset}
-                    />
+                    <ArticleForm/>
                 </main>
             </React.Fragment>
         );

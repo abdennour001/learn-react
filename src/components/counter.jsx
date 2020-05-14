@@ -7,7 +7,7 @@ class Counter extends Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-left">
+            <div className="d-flex justify-content-center">
                 <div className="row align-items-center mb-2 w-50">
                     <div className="col-3 text-left">
                         <button
