@@ -25,17 +25,18 @@ const ArticleForm = () => {
         formData.append("attachment.file", attachment, attachment.name);
         formData.append("editor", 1);
 
+        const herokuURL =
+            "https://cors-anywhere.herokuapp.com/https://corona-watch-api.herokuapp.com/corona-watch-api/v1/feeds/articles/";
+        const baseURL =
+            "http://127.0.0.1:8000/corona-watch-api/v1/feeds/articles/";
+
         axios
-            .post(
-                "https://cors-anywhere.herokuapp.com/https://corona-watch-api.herokuapp.com/corona-watch-api/v1/feeds/articles/",
-                formData,
-                {
-                    headers: {
-                        Authorization: "Basic " + token,
-                        Accept: "application/json"
-                    }
+            .post(baseURL, formData, {
+                headers: {
+                    Authorization: "Basic " + token,
+                    Accept: "application/json",
                 }
-            )
+            })
             .then(res => {
                 console.log(res.data);
             })
