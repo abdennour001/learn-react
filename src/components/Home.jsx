@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import { MoviesContext } from "./MoviesProvider";
+import MovieCard from "./MovieCard";
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
+const Home = () => {
+    const [movies] = useContext(MoviesContext);
 
-    render() {
-        return (
-            <React.Fragment>
-                
-            </React.Fragment>
-        );
-    }
-}
+    return (
+        <div className="row text-center justify-content-center">
+            {movies.map(movie => (
+                <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
+    );
+};
 
 export default Home;
