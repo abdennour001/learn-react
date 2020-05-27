@@ -13,10 +13,10 @@ const Movie = ({ match }) => {
             m => String(m.id) === String(match.params.id)
         );
         setMovie(movie);
-    }, [movies]);
+    }, [match.params.id, movies]);
 
     return (
-        !!movie && (
+        !!!movie ? <p className="lead">404 Not Found.</p> : (
             <div className="row container">
                 <h2 className="col-12">{movie.title + ", " + movie.vote_average}</h2>
                 <p className="col-12 text-muted">{movie.release_date}</p>

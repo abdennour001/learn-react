@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Axios from "axios";
+import { MoviesContext } from "./MoviesProvider";
 
 const NavBar = () => {
+    const [movies, setMovies] = useContext(MoviesContext);
+
     const location = useLocation();
+
+    const [query, setQuery] = useState("");
 
     const isActive = path => {
         return location.pathname === path;
@@ -10,6 +16,23 @@ const NavBar = () => {
 
     const getNavLinkClass = path => {
         return isActive(path) ? "nav-link active" : "nav-link";
+    };
+
+    const onChangeQuery = e => {
+        setQuery(e.target.value);
+    };
+
+    const search = e => {
+        e.preventDefault();
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
+        Axios.get(url)
+            .then(response => {
+                setMovies(response.data.results);
+                console.table(response.data.results)
+            })
+            .catch(error => {
+                console.error(error);
+            });
     };
 
     return (
@@ -47,6 +70,7 @@ const NavBar = () => {
 
                 <form className="form-inline my-2 my-lg-0">
                     <input
+                        onChange={onChangeQuery}
                         className="form-control mr-sm-2"
                         type="search"
                         placeholder="Search (ex. Avengers Endgame)"
@@ -55,6 +79,7 @@ const NavBar = () => {
                     <button
                         className="btn btn-outline-light my-2 my-sm-0"
                         type="submit"
+                        onClick={search}
                     >
                         Search
                     </button>

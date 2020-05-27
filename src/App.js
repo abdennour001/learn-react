@@ -12,8 +12,8 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <NavBar />
                 <MovieProvider>
+                    <NavBar />
                     <main className="container-fluid mt-4">
                         <Switch>
                             <Route path="/" exact component={Home}></Route>

@@ -12,7 +12,7 @@ const MovieCard = props => {
     };
 
     return (
-        <div className="col-4 pb-5">
+        <div className="col-md-6 col-lg-4 col-sm-12 pb-5">
             <div>
                 <h4
                     onClick={() => goToMovie(props.movie.id)}
