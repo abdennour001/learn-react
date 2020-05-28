@@ -5,10 +5,22 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
+import produce from "immer";
+import store from "./store";
+import { Provider } from "react-redux";
+
+import * as actions from "./actions";
+
+store.dispatch(actions.addBug("bug 1"));
+store.dispatch(actions.addBug("bug 2"));
+store.dispatch(actions.addBug("bug 3"));
+store.dispatch(actions.resolveBug(2));
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );

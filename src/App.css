@@ -8,6 +8,18 @@
     pointer-events: none;
 }
 
+.resolved {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 152, 0, 0.5);
+    background: rgba(0, 152, 0, 0.1);
+}
+
+.not-resolved {
+    border-radius: 8px;
+    border: 1px solid rgba(152, 0, 0, 0.5);
+    background: rgba(152, 0, 0, 0.1);
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
