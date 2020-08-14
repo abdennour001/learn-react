@@ -31,7 +31,7 @@ const ArticleForm = () => {
             "http://127.0.0.1:8000/corona-watch-api/v1/feeds/articles/";
 
         axios
-            .post(baseURL, formData, {
+            .post(herokuURL, formData, {
                 headers: {
                     Authorization: "Basic " + token,
                     Accept: "application/json",
@@ -41,7 +41,7 @@ const ArticleForm = () => {
                 console.log(res.data);
             })
             .catch(error => {
-                console.log(error.response.data);
+                console.log(error);
             });
     };
 
